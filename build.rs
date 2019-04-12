@@ -38,7 +38,7 @@ fn get_km_dir(windows_kits_dir: &PathBuf) -> Result<PathBuf, Error> {
     Ok(max_libdir.join("km"))
 }
 
-fn main() {
+fn internal_link_search() {
     let windows_kits_dir = get_windows_kits_dir().unwrap();
 
     let km_dir = get_km_dir(&windows_kits_dir).unwrap();
@@ -58,4 +58,16 @@ fn main() {
         "cargo:rustc-link-search=native={}",
         lib_dir.to_str().unwrap()
     );
+}
+
+fn extra_link_search() {
+    // donothing
+}
+
+fn main() {
+    if var(format!("CARGO_FEATURE_{}","extra_link_search".to_uppercase())).is_ok() {
+        extra_link_search()
+    } else {
+        internal_link_search()
+    }
 }

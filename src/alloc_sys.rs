@@ -1,6 +1,6 @@
 #[repr(C)]
 pub enum POOL_TYPE {
-    PagedPool,
+    NonPagedPool,
 }
 
 pub type PVOID = *mut u8;

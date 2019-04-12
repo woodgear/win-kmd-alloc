@@ -6,3 +6,8 @@ authors = ["Harry Fei <tiziyuanfang@gmail.com>"]
 [build-dependencies]
 winreg = "0.5"
 failure = {version = "0.1.2", default-features = false, features = ["std"]}
+
+[features]
+extra_link_search = []
+internal_link_search = []
+default = ["internal_link_search"]
